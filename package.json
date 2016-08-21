@@ -1,0 +1,33 @@
+{
+  "name": "canvas-webpack-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack --config webpack/webpack.dev.js --watch --NODE_ENV=dev",
+    "build": "webpack --config webpack/webpack.build.js",
+    "clean": "rm -rf dist/ node_modules/ typings/",
+    "postinstall": "typings i"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^3.8.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "tslint": "^3.14.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  }
+}
