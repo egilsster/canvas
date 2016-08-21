@@ -15,5 +15,5 @@ export abstract class Shape {
         return this._position;
     }
 
-    abstract draw(canvas: Canvas): void;
+    abstract draw(ctx: CanvasRenderingContext2D): void;
 }

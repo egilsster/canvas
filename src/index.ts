@@ -82,7 +82,7 @@ $(document).ready(() => {
 
             // Draw shape while mouse is moving
             canvas.redraw();
-            canvas.currentShape.draw(canvas);
+            canvas.currentShape.draw(canvas.ctx);
         }
     });
 
@@ -102,7 +102,7 @@ $(document).ready(() => {
                 currShape.setText = canvas.currentInputBox.val();
 
                 canvas.shapes.push(canvas.currentShape);
-                canvas.currentShape.draw(canvas);
+                canvas.currentShape.draw(canvas.ctx);
 
                 canvas.isDrawing = false;
                 canvas.currentInputBox.remove();

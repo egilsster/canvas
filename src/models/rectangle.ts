@@ -15,9 +15,9 @@ export class Rectangle extends Shape {
         this.height = height;
     }
 
-    draw(canvas: Canvas): void {
-        canvas.ctx.strokeStyle = this.color;
-        canvas.ctx.lineWidth = this.size;
-        canvas.ctx.strokeRect(this.position.x, this.position.y, this.width, this.height);
+    draw(ctx: CanvasRenderingContext2D): void {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.size;
+        ctx.strokeRect(this.position.x, this.position.y, this.width, this.height);
     }
 }

@@ -18,22 +18,22 @@ export class Circle extends Shape {
         this.endPoint.y = y;
     }
 
-    draw(canvas: Canvas): void {
+    draw(ctx: CanvasRenderingContext2D): void {
         let x0 = this.position.x,
             y0 = this.position.y,
             x1 = this.endPoint.x,
             y1 = this.endPoint.y;
 
-        canvas.ctx.lineWidth = this.lineWidth;
-        canvas.ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.lineWidth;
+        ctx.strokeStyle = this.color;
 
-        canvas.ctx.beginPath();
+        ctx.beginPath();
 
-        canvas.ctx.moveTo(x0, y0 + (y1 - y0) / 2);
-        canvas.ctx.bezierCurveTo(x0, y0, x1, y0, x1, y0 + (y1 - y0) / 2);
-        canvas.ctx.bezierCurveTo(x1, y1, x0, y1, x0, y0 + (y1 - y0) / 2);
+        ctx.moveTo(x0, y0 + (y1 - y0) / 2);
+        ctx.bezierCurveTo(x0, y0, x1, y0, x1, y0 + (y1 - y0) / 2);
+        ctx.bezierCurveTo(x1, y1, x0, y1, x0, y0 + (y1 - y0) / 2);
 
-        canvas.ctx.stroke();
-        canvas.ctx.closePath();
+        ctx.stroke();
+        ctx.closePath();
     }
 }

@@ -18,14 +18,14 @@ export class Line extends Shape {
         this.endPoint.y = y;
     }
 
-    draw(canvas: Canvas): void {
-        canvas.ctx.lineCap = 'round';
-        canvas.ctx.lineWidth = this.lineWidth;
-        canvas.ctx.beginPath();
-        canvas.ctx.moveTo(this.position.x, this.position.y);
-        canvas.ctx.lineTo(this.endPoint.x, this.endPoint.y);
+    draw(ctx: CanvasRenderingContext2D): void {
+        ctx.lineCap = 'round';
+        ctx.lineWidth = this.lineWidth;
+        ctx.beginPath();
+        ctx.moveTo(this.position.x, this.position.y);
+        ctx.lineTo(this.endPoint.x, this.endPoint.y);
 
-        canvas.ctx.strokeStyle = this.color;
-        canvas.ctx.stroke();
+        ctx.strokeStyle = this.color;
+        ctx.stroke();
     }
 }

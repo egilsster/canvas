@@ -18,17 +18,17 @@ export class Pencil extends Shape {
         this.points.push(new Point(x, y));
     }
 
-    draw(canvas: Canvas): void {
-        canvas.ctx.lineCap = 'round';
-        canvas.ctx.beginPath();
-        canvas.ctx.moveTo(this.position.x, this.position.y);
+    draw(ctx: CanvasRenderingContext2D): void {
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(this.position.x, this.position.y);
 
         forEach(this.points, (point) => {
-            canvas.ctx.lineTo(point.x, point.y);
+            ctx.lineTo(point.x, point.y);
         });
 
-        canvas.ctx.lineWidth = this.lineWidth;
-        canvas.ctx.strokeStyle = this.color;
-        canvas.ctx.stroke();
+        ctx.lineWidth = this.lineWidth;
+        ctx.strokeStyle = this.color;
+        ctx.stroke();
     }
 }

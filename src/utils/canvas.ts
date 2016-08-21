@@ -23,6 +23,30 @@ export class Canvas {
         this.ctx = canvas.getContext('2d');
     }
 
+    public get penShape(): string {
+        return this._penShape;
+    }
+
+    public set penShape(shape: string) {
+        this._penShape = shape;
+    }
+
+    public get penColor(): string {
+        return this._penColor;
+    }
+
+    public set penColor(color: string) {
+        this._penColor = color;
+    }
+
+    public get penSize(): number {
+        return this._penSize;
+    }
+
+    public set penSize(size: number) {
+        this._penSize = size;
+    }
+
     addShape(x: number, y: number, ev: JQueryMouseEventObject): void {
         this.isDrawing = true;
 
@@ -31,13 +55,13 @@ export class Canvas {
                 this.currentShape = new Pencil(x, y, this.penColor, this.penSize);
                 break;
             case 'line':
-                this.currentShape = new Line(x, y, this.penColor, this.penSize, 0, 0);
+                this.currentShape = new Line(x, y, this.penColor, this.penSize, x, y);
                 break;
             case 'rectangle':
-                this.currentShape = new Rectangle(x, y, this.penColor, this.penSize, 0, 0);
+                this.currentShape = new Rectangle(x, y, this.penColor, this.penSize, x, y);
                 break;
             case 'circle':
-                this.currentShape = new Circle(x, y, this.penColor, this.penSize, 0, 0);
+                this.currentShape = new Circle(x, y, this.penColor, this.penSize, x, y);
                 break;
             case 'text':
                 let rect = this.canvas.getBoundingClientRect();
@@ -54,20 +78,15 @@ export class Canvas {
     // the saved array and remakes items
     public drawLoaded(objects: any[]): void {
         forEach(objects, (object) => {
-            let shape, start;
+            let shape, start, end;
 
             switch (object.type) {
                 case 'eraser':
                 case 'pencil':
                     start = object.position;
                     const points = object.points;
-                    let end;
                     shape = new Pencil(start.x, start.y, object.color, object.lineWidth);
-
-                    forEach(points, (point) => {
-                        shape.addPoint(point.x, point.y);
-                    });
-
+                    forEach(points, (point) => shape.addPoint(point.x, point.y));
                     break;
                 case 'line':
                     start = object.position;
@@ -97,10 +116,7 @@ export class Canvas {
 
     public redraw(): void {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        forEach(this.shapes, (shape) => {
-            shape.draw(this);
-        });
+        forEach(this.shapes, (shape) => shape.draw(this.ctx));
     }
 
     public clearCanvas(): void {
@@ -122,30 +138,6 @@ export class Canvas {
             this.undoObjects.push(obj);
             this.redraw();
         }
-    }
-
-    public get penShape(): string {
-        return this._penShape;
-    }
-
-    public set penShape(shape: string) {
-        this._penShape = shape;
-    }
-
-    public get penColor(): string {
-        return this._penColor;
-    }
-
-    public set penColor(color: string) {
-        this._penColor = color;
-    }
-
-    public get penSize(): number {
-        return this._penSize;
-    }
-
-    public set penSize(size: number) {
-        this._penSize = size;
     }
 
     // Displays the hidden text field for Text shape

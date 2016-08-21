@@ -14,9 +14,9 @@ export class Text extends Shape {
         this.text = text;
     }
 
-    draw(canvas: Canvas): void {
-        canvas.ctx.font = this.fontSize * 5 + 'px Arial';
-        canvas.ctx.fillStyle = this.color;
-        canvas.ctx.fillText(this.text, this.position.x, this.position.y);
+    draw(ctx: CanvasRenderingContext2D): void {
+        ctx.font = this.fontSize * 5 + 'px Arial';
+        ctx.fillStyle = this.color;
+        ctx.fillText(this.text, this.position.x, this.position.y);
     }
 }
