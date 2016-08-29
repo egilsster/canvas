@@ -1,6 +1,5 @@
 'use strict';
 
-import { Canvas } from '../utils/canvas';
 import { Point } from './point';
 
 export abstract class Shape {

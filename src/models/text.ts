@@ -1,6 +1,5 @@
 'use strict';
 
-import { Canvas } from '../utils/canvas';
 import { Shape } from './shape';
 
 export class Text extends Shape {
