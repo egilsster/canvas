@@ -2,8 +2,9 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
-import 'jquery';
 import './styles.scss';
+
+import * as $ from 'jquery';
 
 import { ResizeCanvas } from './utils/resizer';
 import { Pencil } from './models/pencil';
@@ -44,8 +45,8 @@ $(document).ready(() => {
     $('#redo').click((): void => canvas.undoShape());
 
     $('#myCanvas').mousedown((ev: JQueryMouseEventObject): void => {
-        let x0: number = ev.pageX - ev.target['offsetLeft'];
-        let y0: number = ev.pageY - ev.target['offsetTop'];
+        const x0: number = ev.pageX - ev.target['offsetLeft'];
+        const y0: number = ev.pageY - ev.target['offsetTop'];
         canvas.addShape(x0, y0, ev);
     });
 
@@ -86,7 +87,7 @@ $(document).ready(() => {
         }
     });
 
-    $('#myCanvas').mouseup((ev: JQueryMouseEventObject): void => {
+    $('#myCanvas').mouseup((): void => {
         if (canvas.penShape !== 'text') {
             canvas.shapes.push(canvas.currentShape);
             canvas.redraw();
@@ -117,7 +118,7 @@ $(document).ready(() => {
         if (canvas.shapes.length > 0) {
             const name = prompt('Save drawing as:', '');
 
-            if (name !== '') {
+            if (name) {
                 server.saveCanvas(name);
             } else {
                 alert('You have to pick a name for this piece of art.');

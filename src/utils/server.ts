@@ -25,10 +25,11 @@ export class Server {
             crossDomain: true,
             success: (data) => {
                 this.getSavedList();
+                console.log(data);
                 // The save was successful...
             },
             error: (xhr, err) => {
-                console.log('Error!');
+                console.log('Error!', err, xhr);
                 // Something went wrong...
             }
         });
@@ -50,7 +51,7 @@ export class Server {
                 // The save was successful...
             },
             error: (xhr, err) => {
-                console.log('Error!');
+                console.log('Error!', err, xhr);
                 // Something went wrong...
             }
         });
@@ -75,7 +76,7 @@ export class Server {
                 // The save was successful...
             },
             error: (xhr, err) => {
-                console.log('Error!');
+                console.log('Error!', err, xhr);
                 // Something went wrong...
             }
         });

@@ -20,7 +20,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            inject: 'body',
+            inject: 'head',
             hash: true
         }),
         new BrowserSyncPlugin({

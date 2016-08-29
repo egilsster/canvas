@@ -1,7 +1,6 @@
 'use strict';
 
 import { forEach } from 'lodash';
-import { Canvas } from '../utils/canvas';
 import { Shape } from './shape';
 import { Point } from './point';
 

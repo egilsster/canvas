@@ -7,10 +7,11 @@ import { Rectangle } from '../models/rectangle';
 import { Circle } from '../models/circle';
 import { Text } from '../models/text';
 import { Shape } from '../models/shape';
+import { Point } from '../models/point';
 
 export class Canvas {
     public ctx: CanvasRenderingContext2D;
-    public currentInputBox;
+    public currentInputBox: JQuery;
     public currentShape: Shape;
     public shapes: Shape[] = [];
     public undoObjects: Shape[] = [];
@@ -20,7 +21,7 @@ export class Canvas {
     private _penSize: number = 4;
 
     constructor(public canvas: HTMLCanvasElement) {
-        this.ctx = canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d') || new CanvasRenderingContext2D();
     }
 
     public get penShape(): string {
@@ -78,7 +79,7 @@ export class Canvas {
     // the saved array and remakes items
     public drawLoaded(objects: any[]): void {
         forEach(objects, (object) => {
-            let shape, start, end;
+            let shape: any, start: Point, end: Point;
 
             switch (object.type) {
                 case 'eraser':
@@ -127,7 +128,9 @@ export class Canvas {
     public undoShape(): void {
         if (this.undoObjects.length > 0) {
             let obj = this.undoObjects.pop();
-            this.shapes.push(obj);
+            if (obj) {
+                this.shapes.push(obj);
+            }
             this.redraw();
         }
     }
@@ -135,7 +138,9 @@ export class Canvas {
     public redoShape(): void {
         if (this.shapes.length > 0) {
             let obj = this.shapes.pop();
-            this.undoObjects.push(obj);
+            if (obj) {
+                this.undoObjects.push(obj);
+            }
             this.redraw();
         }
     }
