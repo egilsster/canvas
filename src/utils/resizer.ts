@@ -1,6 +1,8 @@
 'use strict';
 
-export function ResizeCanvas() {
+import * as $ from 'jquery';
+
+export default function ResizeCanvas() {
     const container = $('.canvasContainer');
     const canvas = $('#myCanvas');
     const canvasWidth = container.width();

@@ -1,6 +1,6 @@
 'use strict';
 
-export interface Whiteboard {
+interface Whiteboard {
     DateAdded: string;
     ID: number;
     IsTemplate: boolean;
@@ -8,3 +8,5 @@ export interface Whiteboard {
     WhiteboardContents: string;
     WhiteboardTitle: string;
 }
+
+export default Whiteboard;

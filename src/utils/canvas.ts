@@ -1,13 +1,13 @@
 'use strict';
 
 import { forEach } from 'lodash';
-import { Pencil } from '../models/pencil';
-import { Line } from '../models/line';
-import { Rectangle } from '../models/rectangle';
-import { Circle } from '../models/circle';
-import { Text } from '../models/text';
-import { Shape } from '../models/shape';
-import { Point } from '../models/point';
+import Pencil from '../models/pencil';
+import Line from '../models/line';
+import Rectangle from '../models/rectangle';
+import Circle from '../models/circle';
+import Text from '../models/text';
+import Shape from '../models/shape';
+import Point from '../models/point';
 
 export class Canvas {
     public ctx: CanvasRenderingContext2D;
@@ -16,7 +16,7 @@ export class Canvas {
     public shapes: Shape[] = [];
     public undoObjects: Shape[] = [];
     public isDrawing: boolean = false;
-    private _penColor: string = 'black';
+    private _penColor: string = '#000';
     private _penShape: string = 'pencil';
     private _penSize: number = 4;
 
@@ -48,7 +48,7 @@ export class Canvas {
         this._penSize = size;
     }
 
-    addShape(x: number, y: number, ev: JQueryMouseEventObject): void {
+    public addShape(x: number, y: number, ev: JQueryMouseEventObject): void {
         this.isDrawing = true;
 
         switch (this.penShape) {
@@ -79,6 +79,8 @@ export class Canvas {
     // the saved array and remakes items
     public drawLoaded(objects: any[]): void {
         forEach(objects, (object) => {
+            // TODO: Clean up switch statement so I dont
+            // have to use the shape variable for casting
             let shape: any, start: Point, end: Point;
 
             switch (object.type) {
@@ -127,7 +129,7 @@ export class Canvas {
 
     public undoShape(): void {
         if (this.undoObjects.length > 0) {
-            let obj = this.undoObjects.pop();
+            const obj = this.undoObjects.pop();
             if (obj) {
                 this.shapes.push(obj);
             }
@@ -137,7 +139,7 @@ export class Canvas {
 
     public redoShape(): void {
         if (this.shapes.length > 0) {
-            let obj = this.shapes.pop();
+            const obj = this.shapes.pop();
             if (obj) {
                 this.undoObjects.push(obj);
             }
@@ -160,3 +162,5 @@ export class Canvas {
         this.currentInputBox.focus();
     }
 }
+
+export default Canvas;

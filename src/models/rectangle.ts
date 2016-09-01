@@ -1,8 +1,8 @@
 'use strict';
 
-import { Shape } from './shape';
+import Shape from './shape';
 
-export class Rectangle extends Shape {
+class Rectangle extends Shape {
     public type = 'rectangle';
 
     constructor(x: number, y: number, color: string, public size: number, public width: number, public height: number) {
@@ -20,3 +20,5 @@ export class Rectangle extends Shape {
         ctx.strokeRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
+
+export default Rectangle;

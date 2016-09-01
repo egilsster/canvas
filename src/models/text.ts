@@ -1,8 +1,8 @@
 'use strict';
 
-import { Shape } from './shape';
+import Shape from './shape';
 
-export class Text extends Shape {
+class Text extends Shape {
     public type: string = 'text';
 
     constructor(x: number, y: number, color: string, private text: string, public fontSize: number) {
@@ -19,3 +19,5 @@ export class Text extends Shape {
         ctx.fillText(this.text, this.position.x, this.position.y);
     }
 }
+
+export default Text;

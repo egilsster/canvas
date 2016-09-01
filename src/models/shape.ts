@@ -1,8 +1,8 @@
 'use strict';
 
-import { Point } from './point';
+import Point from './point';
 
-export abstract class Shape {
+abstract class Shape {
     public type: string;
     private _position: Point;
 
@@ -16,3 +16,5 @@ export abstract class Shape {
 
     abstract draw(ctx: CanvasRenderingContext2D): void;
 }
+
+export default Shape;

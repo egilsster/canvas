@@ -2,18 +2,18 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
+import 'spectrum-colorpicker/spectrum.css';
+import 'spectrum-colorpicker';
 import './styles.scss';
-
 import * as $ from 'jquery';
-
-import { ResizeCanvas } from './utils/resizer';
-import { Pencil } from './models/pencil';
-import { Line } from './models/line';
-import { Rectangle } from './models/rectangle';
-import { Circle } from './models/circle';
-import { Text } from './models/text';
-import { Server } from './utils/server';
-import { Canvas } from './utils/canvas';
+import ResizeCanvas from './utils/resizer';
+import Pencil from './models/pencil';
+import Line from './models/line';
+import Rectangle from './models/rectangle';
+import Circle from './models/circle';
+import Text from './models/text';
+import Server from './utils/server';
+import Canvas from './utils/canvas';
 
 let server: Server;
 
@@ -27,6 +27,11 @@ $(document).ready(() => {
 
     server = new Server(canvas, $('#savedDrawingData'));
     server.getSavedList();
+
+    const colorPicker = <any>$('#penColor');
+    colorPicker.spectrum({
+        preferredFormat: 'hex'
+    });
 
     $('#penShape').change((ev: JQueryMouseEventObject): void => {
         canvas.penShape = ev.target['value'];
@@ -45,8 +50,8 @@ $(document).ready(() => {
     $('#redo').click((): void => canvas.undoShape());
 
     $('#myCanvas').mousedown((ev: JQueryMouseEventObject): void => {
-        const x0: number = ev.pageX - ev.target['offsetLeft'];
-        const y0: number = ev.pageY - ev.target['offsetTop'];
+        const x0 = ev.pageX - ev.target['offsetLeft'];
+        const y0 = ev.pageY - ev.target['offsetTop'];
         canvas.addShape(x0, y0, ev);
     });
 
@@ -57,6 +62,8 @@ $(document).ready(() => {
             const width = x0 - canvas.currentShape.position.x;
             const height = y0 - canvas.currentShape.position.y;
             let currShape;
+
+            // TODO: Find a way to remove the casting step
 
             switch (canvas.penShape) {
                 case 'pencil':

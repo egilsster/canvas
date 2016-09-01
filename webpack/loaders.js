@@ -4,6 +4,10 @@ module.exports = [
         loader: 'ts'
     },
     {
+        test: /\.js$/,
+        loader: 'source-map-loader'
+    },
+    {
         test: /\.css$/,
         loader: 'style!css'
     },

@@ -1,9 +1,9 @@
 'use strict';
 
-import { Shape } from './shape';
-import { Point } from './point';
+import Shape from './shape';
+import Point from './point';
 
-export class Circle extends Shape {
+class Circle extends Shape {
     public type = 'circle';
     private endPoint: Point;
 
@@ -36,3 +36,5 @@ export class Circle extends Shape {
         ctx.closePath();
     }
 }
+
+export default Circle;

@@ -1,9 +1,9 @@
 'use strict';
 
-import { Shape } from './shape';
-import { Point } from './point';
+import Shape from './shape';
+import Point from './point';
 
-export class Line extends Shape {
+class Line extends Shape {
     public type: string = 'line';
     private endPoint: Point;
 
@@ -28,3 +28,5 @@ export class Line extends Shape {
         ctx.stroke();
     }
 }
+
+export default Line;

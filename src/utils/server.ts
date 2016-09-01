@@ -1,10 +1,11 @@
 'use strict';
 
+import * as $ from 'jquery';
 import { map } from 'lodash';
-import { Whiteboard } from '../models/whiteboard';
-import { Canvas } from '../utils/canvas';
+import Whiteboard from '../models/whiteboard';
+import Canvas from '../utils/canvas';
 
-export class Server {
+class Server {
     constructor(public canvas: Canvas, public savedItems: JQuery) { }
 
     public saveCanvas(name: string): void {
@@ -82,9 +83,9 @@ export class Server {
         });
     }
 
-    private generateSavedList(data: Whiteboard[]): string {
+    private generateSavedList(whiteboards: Whiteboard[]): string {
         // Make table of buttons to load each drawing
-        return map(data, (item) => {
+        return map(whiteboards, (item) => {
             return '<li class="loadCanvas" value="' +
                 item.ID + '"><a href="#">' +
                 item.WhiteboardTitle +
@@ -92,3 +93,5 @@ export class Server {
         }).join('');
     }
 }
+
+export default Server;
