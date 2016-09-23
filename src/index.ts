@@ -1,5 +1,3 @@
-'use strict';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'spectrum-colorpicker/spectrum.css';
@@ -7,10 +5,6 @@ import 'spectrum-colorpicker';
 import './styles.scss';
 import * as $ from 'jquery';
 import ResizeCanvas from './utils/resizer';
-import Pencil from './models/pencil';
-import Line from './models/line';
-import Rectangle from './models/rectangle';
-import Circle from './models/circle';
 import Text from './models/text';
 import Server from './utils/server';
 import Canvas from './utils/canvas';
@@ -67,23 +61,23 @@ $(document).ready(() => {
 
             switch (canvas.penShape) {
                 case 'pencil':
-                    currShape = <Pencil>canvas.currentShape;
+                    currShape = canvas.currentShape;
                     currShape.addPoint(x0, y0);
                     break;
                 case 'line':
-                    currShape = <Line>canvas.currentShape;
+                    currShape = canvas.currentShape;
                     currShape.setEndPoint(x0, y0);
                     break;
                 case 'rectangle':
-                    currShape = <Rectangle>canvas.currentShape;
+                    currShape = canvas.currentShape;
                     currShape.setSize(width, height);
                     break;
                 case 'circle':
-                    currShape = <Circle>canvas.currentShape;
+                    currShape = canvas.currentShape;
                     currShape.setSize(x0, y0);
                     break;
                 case 'eraser':
-                    currShape = <Pencil>canvas.currentShape;
+                    currShape = canvas.currentShape;
                     currShape.addPoint(x0, y0);
                     break;
             }

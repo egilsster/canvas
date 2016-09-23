@@ -1,5 +1,3 @@
-'use strict';
-
 import * as $ from 'jquery';
 import { map } from 'lodash';
 import Whiteboard from '../models/whiteboard';

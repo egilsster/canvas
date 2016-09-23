@@ -1,5 +1,3 @@
-'use strict';
-
 import { forEach } from 'lodash';
 import Pencil from '../models/pencil';
 import Line from '../models/line';
