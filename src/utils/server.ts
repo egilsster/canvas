@@ -84,10 +84,8 @@ class Server {
     private generateSavedList(whiteboards: Whiteboard[]): string {
         // Make table of buttons to load each drawing
         return map(whiteboards, (item) => {
-            return '<li class="loadCanvas" value="' +
-                item.ID + '"><a href="#">' +
-                item.WhiteboardTitle +
-                '</a></li>';
+            const id = item.ID, title = item.WhiteboardTitle;
+            return `<li class="loadCanvas" value="${id}"><a href="#">${title}</a></li>`;
         }).join('');
     }
 }
