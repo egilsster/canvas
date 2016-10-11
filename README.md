@@ -1,7 +1,7 @@
 # Requirements
 
 ```
-npm i -g webpack typescript@rc
+npm i -g webpack typescript
 ```
 
 # Setup
