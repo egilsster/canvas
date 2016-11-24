@@ -1,5 +1,3 @@
-'use strict';
-
 interface Whiteboard {
     DateAdded: string;
     ID: number;

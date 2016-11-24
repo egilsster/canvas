@@ -5,9 +5,13 @@ import 'spectrum-colorpicker';
 import './styles.scss';
 import * as $ from 'jquery';
 import ResizeCanvas from './utils/resizer';
-import Text from './models/text';
 import Server from './utils/server';
 import Canvas from './utils/canvas';
+import Pencil from './models/pencil';
+import Line from './models/line';
+import Rectangle from './models/rectangle';
+import Circle from './models/circle';
+import Text from './models/text';
 
 let server: Server;
 
@@ -61,23 +65,23 @@ $(document).ready(() => {
 
             switch (canvas.penShape) {
                 case 'pencil':
-                    currShape = canvas.currentShape;
+                    currShape = <Pencil>canvas.currentShape;
                     currShape.addPoint(x0, y0);
                     break;
                 case 'line':
-                    currShape = canvas.currentShape;
+                    currShape = <Line>canvas.currentShape;
                     currShape.setEndPoint(x0, y0);
                     break;
                 case 'rectangle':
-                    currShape = canvas.currentShape;
+                    currShape = <Rectangle>canvas.currentShape;
                     currShape.setSize(width, height);
                     break;
                 case 'circle':
-                    currShape = canvas.currentShape;
+                    currShape = <Circle>canvas.currentShape;
                     currShape.setSize(x0, y0);
                     break;
                 case 'eraser':
-                    currShape = canvas.currentShape;
+                    currShape = <Pencil>canvas.currentShape;
                     currShape.addPoint(x0, y0);
                     break;
             }

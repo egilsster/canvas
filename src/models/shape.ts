@@ -1,5 +1,3 @@
-'use strict';
-
 import Point from './point';
 
 abstract class Shape {

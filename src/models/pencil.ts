@@ -1,5 +1,3 @@
-'use strict';
-
 import { forEach } from 'lodash';
 import Shape from './shape';
 import Point from './point';
