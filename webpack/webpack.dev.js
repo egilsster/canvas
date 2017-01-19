@@ -1,22 +1,22 @@
-var loaders = require('./loaders');
+var rules = require('./rules');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
     entry: ['./src/index.ts'],
+
     output: {
         filename: 'build.js',
         path: 'dist'
     },
+
     resolve: {
-        root: __dirname,
-        extensions: ['', '.ts', '.js', '.json']
+        extensions: ['.ts', '.js', '.json']
     },
-    resolveLoader: {
-        modulesDirectories: ['node_modules']
-    },
+
     devtool: 'source-map',
+
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -40,7 +40,8 @@ module.exports = {
             'window.jquery': 'jquery'
         })
     ],
-    module:{
-        loaders: loaders
+
+    module: {
+        rules: rules
     }
 };

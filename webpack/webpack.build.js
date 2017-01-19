@@ -1,20 +1,19 @@
-var loaders = require('./loaders');
+var rules = require('./rules');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
     entry: ['./src/index.ts'],
+
     output: {
         filename: 'build.js',
         path: 'dist'
     },
+
     resolve: {
-        root: __dirname,
-        extensions: ['', '.ts', '.js', '.json']
+        extensions: ['.ts', '.js', '.json']
     },
-    resolveLoader: {
-        modulesDirectories: ['node_modules']
-    },
+
     plugins: [
         new webpack.optimize.UglifyJsPlugin(
             {
@@ -37,7 +36,8 @@ module.exports = {
             'window.jquery': 'jquery'
         })
     ],
+
     module: {
-        loaders: loaders
+        rules: rules
     }
 };
