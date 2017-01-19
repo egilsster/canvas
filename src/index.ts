@@ -1,9 +1,11 @@
+import * as $ from 'jquery';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'spectrum-colorpicker/spectrum.css';
 import 'spectrum-colorpicker';
 import './styles.scss';
-import * as $ from 'jquery';
+
 import ResizeCanvas from './utils/resizer';
 import Server from './utils/server';
 import Canvas from './utils/canvas';
@@ -20,13 +22,13 @@ $(document).ready(() => {
     ResizeCanvas();
     $(window).resize(ResizeCanvas);
 
-    const canvasElement = <HTMLCanvasElement>document.getElementById('myCanvas');
+    const canvasElement = document.getElementById('myCanvas') as HTMLCanvasElement;
     const canvas: Canvas = new Canvas(canvasElement);
 
     server = new Server(canvas, $('#savedDrawingData'));
     server.getSavedList();
 
-    const colorPicker = <any>$('#penColor');
+    const colorPicker = $('#penColor') as any;
     colorPicker.spectrum({
         preferredFormat: 'hex'
     });
@@ -65,23 +67,23 @@ $(document).ready(() => {
 
             switch (canvas.penShape) {
                 case 'pencil':
-                    currShape = <Pencil>canvas.currentShape;
+                    currShape = canvas.currentShape as Pencil;
                     currShape.addPoint(x0, y0);
                     break;
                 case 'line':
-                    currShape = <Line>canvas.currentShape;
+                    currShape = canvas.currentShape as Line;
                     currShape.setEndPoint(x0, y0);
                     break;
                 case 'rectangle':
-                    currShape = <Rectangle>canvas.currentShape;
+                    currShape = canvas.currentShape as Rectangle;
                     currShape.setSize(width, height);
                     break;
                 case 'circle':
-                    currShape = <Circle>canvas.currentShape;
+                    currShape = canvas.currentShape as Circle;
                     currShape.setSize(x0, y0);
                     break;
                 case 'eraser':
-                    currShape = <Pencil>canvas.currentShape;
+                    currShape = canvas.currentShape as Pencil;
                     currShape.addPoint(x0, y0);
                     break;
             }
@@ -104,7 +106,7 @@ $(document).ready(() => {
     $('.text-spawner').keydown((ev: JQueryMouseEventObject): void => {
         if (canvas.isDrawing) {
             if (ev.which === 13) {
-                let currShape: Text = <Text>canvas.currentShape;
+                let currShape = canvas.currentShape as Text;
                 currShape.setText = canvas.currentInputBox.val();
 
                 canvas.shapes.push(canvas.currentShape);
