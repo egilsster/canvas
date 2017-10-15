@@ -20,7 +20,7 @@ class Pencil extends Shape {
         ctx.beginPath();
         ctx.moveTo(this.position.x, this.position.y);
 
-        forEach(this.points, (point) => {
+        this.points.forEach((point) => {
             ctx.lineTo(point.x, point.y);
         });
 

@@ -1,5 +1,4 @@
 import * as $ from 'jquery';
-import { map } from 'lodash';
 import Whiteboard from '../models/whiteboard';
 import Canvas from '../utils/canvas';
 
@@ -83,7 +82,7 @@ class Server {
 
     private generateSavedList(whiteboards: Whiteboard[]): string {
         // Make table of buttons to load each drawing
-        return map(whiteboards, (item) => {
+        return whiteboards.map((item) => {
             const id = item.ID, title = item.WhiteboardTitle;
             return `<li class="loadCanvas" value="${id}"><a href="#">${title}</a></li>`;
         }).join('');

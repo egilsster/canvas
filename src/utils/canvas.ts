@@ -1,4 +1,3 @@
-import { forEach } from 'lodash';
 import Pencil from '../models/pencil';
 import Line from '../models/line';
 import Rectangle from '../models/rectangle';
@@ -76,7 +75,7 @@ export class Canvas {
     // Function that goes through
     // the saved array and remakes items
     public drawLoaded(objects: any[]): void {
-        forEach(objects, (object) => {
+        objects.forEach((object) => {
             // TODO: Clean up switch statement so I dont
             // have to use the shape variable for casting
             let shape: any, start: Point, end: Point;
@@ -85,9 +84,9 @@ export class Canvas {
                 case 'eraser':
                 case 'pencil':
                     start = object.position;
-                    const points = object.points;
+                    const points: Point[] = object.points;
                     shape = new Pencil(start.x, start.y, object.color, object.lineWidth);
-                    forEach(points, (point) => shape.addPoint(point.x, point.y));
+                    points.forEach((point) => shape.addPoint(point.x, point.y));
                     break;
                 case 'line':
                     start = object.position;
@@ -117,7 +116,7 @@ export class Canvas {
 
     public redraw(): void {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        forEach(this.shapes, (shape) => shape.draw(this.ctx));
+        this.shapes.forEach((shape) => shape.draw(this.ctx));
     }
 
     public clearCanvas(): void {
