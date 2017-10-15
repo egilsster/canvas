@@ -1,12 +1,8 @@
-# Requirements
+# Canvas in TypeScript
 
-```
-npm i -g webpack typescript
-```
+## Setup
 
-# Setup
-
-```
+```sh
 npm i
 npm start
 ```
