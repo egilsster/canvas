@@ -1,8 +1,7 @@
-import { forEach } from 'lodash';
 import Shape from './shape';
 import Point from './point';
 
-class Pencil extends Shape {
+export default class Pencil extends Shape {
     public type: string = 'pencil';
     private points: Point[];
 
@@ -29,5 +28,3 @@ class Pencil extends Shape {
         ctx.stroke();
     }
 }
-
-export default Pencil;

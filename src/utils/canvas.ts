@@ -6,7 +6,7 @@ import Text from '../models/text';
 import Shape from '../models/shape';
 import Point from '../models/point';
 
-export class Canvas {
+export default class Canvas {
     public ctx: CanvasRenderingContext2D;
     public currentInputBox: JQuery;
     public currentShape: Shape;
@@ -159,5 +159,3 @@ export class Canvas {
         this.currentInputBox.focus();
     }
 }
-
-export default Canvas;
