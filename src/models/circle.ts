@@ -1,7 +1,7 @@
 import Shape from './shape';
 import Point from './point';
 
-class Circle extends Shape {
+export default class Circle extends Shape {
     public type = 'circle';
     private endPoint: Point;
 
@@ -34,5 +34,3 @@ class Circle extends Shape {
         ctx.closePath();
     }
 }
-
-export default Circle;

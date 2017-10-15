@@ -1,4 +1,4 @@
-interface Whiteboard {
+export default interface Whiteboard {
     DateAdded: string;
     ID: number;
     IsTemplate: boolean;
@@ -6,5 +6,3 @@ interface Whiteboard {
     WhiteboardContents: string;
     WhiteboardTitle: string;
 }
-
-export default Whiteboard;

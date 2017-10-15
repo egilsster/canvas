@@ -1,6 +1,6 @@
 import Shape from './shape';
 
-class Rectangle extends Shape {
+export default class Rectangle extends Shape {
     public type = 'rectangle';
 
     constructor(x: number, y: number, color: string, public size: number, public width: number, public height: number) {
@@ -18,5 +18,3 @@ class Rectangle extends Shape {
         ctx.strokeRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
-
-export default Rectangle;

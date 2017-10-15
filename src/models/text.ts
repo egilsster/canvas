@@ -1,6 +1,6 @@
 import Shape from './shape';
 
-class Text extends Shape {
+export default class Text extends Shape {
     public type: string = 'text';
 
     constructor(x: number, y: number, color: string, private text: string, public fontSize: number) {
@@ -17,5 +17,3 @@ class Text extends Shape {
         ctx.fillText(this.text, this.position.x, this.position.y);
     }
 }
-
-export default Text;

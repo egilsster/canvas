@@ -1,7 +1,7 @@
 import Shape from './shape';
 import Point from './point';
 
-class Line extends Shape {
+export default class Line extends Shape {
     public type: string = 'line';
     private endPoint: Point;
 
@@ -26,5 +26,3 @@ class Line extends Shape {
         ctx.stroke();
     }
 }
-
-export default Line;
