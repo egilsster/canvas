@@ -3,11 +3,10 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "noImplicitReturns": true,
     "sourceMap": false,
-    "strictNullChecks": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "strict": true
   },
   "exclude": [
     "node_modules"
