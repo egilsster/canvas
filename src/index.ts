@@ -33,15 +33,15 @@ $(document).ready(() => {
         preferredFormat: 'hex'
     });
 
-    $('#penShape').change((ev: JQueryMouseEventObject): void => {
+    $('#penShape').change((ev: JQuery.EventBase): void => {
         canvas.penShape = ev.target['value'];
     });
 
-    $('#penSize').change((ev: JQueryMouseEventObject): void => {
+    $('#penSize').change((ev: JQuery.EventBase): void => {
         canvas.penSize = ev.target['value'];
     });
 
-    $('#penColor').change((ev: JQueryMouseEventObject): void => {
+    $('#penColor').change((ev: JQuery.EventBase): void => {
         canvas.penColor = ev.target['value'];
     });
 
@@ -49,13 +49,13 @@ $(document).ready(() => {
     $('#undo').click((): void => canvas.redoShape());
     $('#redo').click((): void => canvas.undoShape());
 
-    $('#myCanvas').mousedown((ev: JQueryMouseEventObject): void => {
+    $('#myCanvas').mousedown((ev: JQuery.MouseDownEvent): void => {
         const x0 = ev.pageX - ev.target['offsetLeft'];
         const y0 = ev.pageY - ev.target['offsetTop'];
         canvas.addShape(x0, y0, ev);
     });
 
-    $('#myCanvas').mousemove((ev: JQueryMouseEventObject): void => {
+    $('#myCanvas').mousemove((ev: JQuery.MouseMoveEvent): void => {
         if (canvas.isDrawing) {
             const x0 = ev.pageX - ev.target['offsetLeft'];
             const y0 = ev.pageY - ev.target['offsetTop'];
@@ -103,11 +103,11 @@ $(document).ready(() => {
         canvas.isDrawing = false;
     });
 
-    $('.text-spawner').keydown((ev: JQueryMouseEventObject): void => {
+    $('.text-spawner').keydown((ev: JQuery.KeyDownEvent): void => {
         if (canvas.isDrawing) {
             if (ev.which === 13) {
-                let currShape = canvas.currentShape as Text;
-                currShape.setText = canvas.currentInputBox.val();
+                const currShape = canvas.currentShape as Text;
+                currShape.setText = canvas.currentInputBox.val() as string;
 
                 canvas.shapes.push(canvas.currentShape);
                 canvas.currentShape.draw(canvas.ctx);
@@ -138,6 +138,6 @@ $(document).ready(() => {
 
 // To handle clicks in the loaded drawing list
 $(document).on('click', '.loadCanvas', function () {
-    const id = $(this).val();
+    const id = $(this).val() as number;
     server.getSaved(id);
 });

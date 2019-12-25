@@ -45,7 +45,7 @@ export default class Canvas {
         this._penSize = size;
     }
 
-    public addShape(x: number, y: number, ev: JQueryMouseEventObject): void {
+    public addShape(x: number, y: number, ev: JQuery.MouseEventBase): void {
         this.isDrawing = true;
 
         switch (this.penShape) {
