@@ -76,7 +76,7 @@ export default class Canvas {
   // the saved array and remakes items
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public drawLoaded(objects: any[]): void {
-    objects.forEach(object => {
+    objects.forEach((object) => {
       // TODO: Clean up switch statement so I dont
       // have to use the shape variable for casting
       let shape, start: Point, end: Point;
@@ -87,7 +87,7 @@ export default class Canvas {
         case 'pencil':
           start = object.position;
           shape = new Pencil(start.x, start.y, object.color, object.lineWidth);
-          points.forEach(point => shape.addPoint(point.x, point.y));
+          points.forEach((point) => shape.addPoint(point.x, point.y));
           break;
         case 'line':
           start = object.position;
@@ -117,7 +117,7 @@ export default class Canvas {
 
   public redraw(): void {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.shapes.forEach(shape => shape.draw(this.ctx));
+    this.shapes.forEach((shape) => shape.draw(this.ctx));
   }
 
   public clearCanvas(): void {

@@ -16,10 +16,10 @@ export default class Circle extends Shape {
   }
 
   draw(ctx: CanvasRenderingContext2D): void {
-    const x0 = this.position.x,
-      y0 = this.position.y,
-      x1 = this.endPoint.x,
-      y1 = this.endPoint.y;
+    const x0 = this.position.x;
+    const y0 = this.position.y;
+    const x1 = this.endPoint.x;
+    const y1 = this.endPoint.y;
 
     ctx.lineWidth = this.lineWidth;
     ctx.strokeStyle = this.color;
