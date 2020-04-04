@@ -138,7 +138,7 @@ $(document).ready(() => {
 });
 
 // To handle clicks in the loaded drawing list
-$(document).on('click', '.loadCanvas', function() {
+$(document).on('click', '.loadCanvas', function () {
   const id = $(this).val() as number;
   server.getSaved(id);
 });

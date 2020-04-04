@@ -21,7 +21,7 @@ class Server {
       data: param,
       dataType: 'jsonp',
       crossDomain: true,
-      success: data => {
+      success: (data) => {
         this.getSavedList();
         console.log(data);
         // The save was successful...
@@ -41,7 +41,7 @@ class Server {
       data: { ID: id },
       dataType: 'jsonp',
       crossDomain: true,
-      success: data => {
+      success: (data) => {
         const objects = JSON.parse(data['WhiteboardContents']);
         // Go through objects and push to objcontainer
         this.canvas.clearCanvas();
@@ -68,7 +68,7 @@ class Server {
       data: param,
       dataType: 'jsonp',
       crossDomain: true,
-      success: data => {
+      success: (data) => {
         const savedList = this.generateSavedList(data);
         this.savedItems.html(savedList);
         // The save was successful...
@@ -83,7 +83,7 @@ class Server {
   private generateSavedList(whiteboards: Whiteboard[]): string {
     // Make table of buttons to load each drawing
     return whiteboards
-      .map(item => {
+      .map((item) => {
         const id = item.ID,
           title = item.WhiteboardTitle;
         return `<li class="loadCanvas" value="${id}"><a href="#">${title}</a></li>`;

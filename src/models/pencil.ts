@@ -19,7 +19,7 @@ export default class Pencil extends Shape {
     ctx.beginPath();
     ctx.moveTo(this.position.x, this.position.y);
 
-    this.points.forEach(point => {
+    this.points.forEach((point) => {
       ctx.lineTo(point.x, point.y);
     });
 
