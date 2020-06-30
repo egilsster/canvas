@@ -1,13 +1,18 @@
+const path = require('path');
 const rules = require('./rules');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const distPath = path.resolve(__dirname, 'dist');
+
 module.exports = {
+  mode: 'production',
+
   entry: ['./src/index.ts'],
 
   output: {
     filename: 'build.js',
-    path: 'dist',
+    path: distPath,
   },
 
   resolve: {
@@ -15,13 +20,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      mangle: true,
-      comments: false,
-    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'body',
