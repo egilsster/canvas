@@ -7,15 +7,12 @@ import 'spectrum-colorpicker';
 import './styles.scss';
 
 import ResizeCanvas from './utils/resizer';
-import Server from './utils/server';
 import Canvas from './utils/canvas';
 import Pencil from './models/pencil';
 import Line from './models/line';
 import Rectangle from './models/rectangle';
 import Circle from './models/circle';
 import Text from './models/text';
-
-let server: Server;
 
 $(document).ready(() => {
   // Resize the whiteboard to match width and height of window
@@ -24,10 +21,6 @@ $(document).ready(() => {
 
   const canvasElement = document.getElementById('myCanvas') as HTMLCanvasElement;
   const canvas: Canvas = new Canvas(canvasElement);
-
-  server = new Server(canvas, $('#savedDrawingData'));
-  server.getSavedList();
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colorPicker = $('#penColor') as any;
   colorPicker.spectrum({
@@ -121,24 +114,4 @@ $(document).ready(() => {
       }
     }
   });
-
-  $('#save').click((): void => {
-    if (canvas.shapes.length > 0) {
-      const name = prompt('Save drawing as:', '');
-
-      if (name) {
-        server.saveCanvas(name);
-      } else {
-        alert('You have to pick a name for this piece of art.');
-      }
-    } else {
-      alert('Nothing to do here..');
-    }
-  });
-});
-
-// To handle clicks in the loaded drawing list
-$(document).on('click', '.loadCanvas', function () {
-  const id = $(this).val() as number;
-  server.getSaved(id);
 });
