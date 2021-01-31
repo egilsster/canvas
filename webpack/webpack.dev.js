@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rules = require('./rules');
+const { ESBuildPlugin } = require('esbuild-loader');
 
 const distDir = path.resolve(__dirname, '../dist');
 
@@ -18,6 +19,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new ESBuildPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'head',

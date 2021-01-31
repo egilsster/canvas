@@ -1,7 +1,12 @@
 module.exports = [
   {
-    test: /\.ts(x?)$/,
-    loader: 'ts-loader',
+    test: /\.ts?$/,
+    loader: 'esbuild-loader',
+    options: {
+      loader: 'ts',
+      target: 'es2015',
+      tsconfigRaw: require('../tsconfig.json'),
+    },
   },
   {
     test: /\.js$/,

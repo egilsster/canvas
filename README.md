@@ -3,6 +3,6 @@
 ## Setup
 
 ```sh
-yarn
-yarn start
+npm install
+npm start
 ```
