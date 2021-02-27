@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'spectrum-colorpicker/spectrum.css';
 import 'spectrum-colorpicker';
-import './styles.scss';
+import './styles.css';
 
 import ResizeCanvas from './utils/resizer';
 import Canvas from './utils/canvas';
