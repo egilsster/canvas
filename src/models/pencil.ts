@@ -1,8 +1,8 @@
-import Shape from './shape';
-import Point from './point';
+import Shape from "./shape";
+import Point from "./point";
 
 export default class Pencil extends Shape {
-  public type = 'pencil';
+  public type = "pencil";
   private points: Point[];
 
   constructor(x: number, y: number, public color: string, public lineWidth: number) {
@@ -15,7 +15,7 @@ export default class Pencil extends Shape {
   }
 
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.lineCap = 'round';
+    ctx.lineCap = "round";
     ctx.beginPath();
     ctx.moveTo(this.position.x, this.position.y);
 

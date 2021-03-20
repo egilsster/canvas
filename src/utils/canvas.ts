@@ -1,10 +1,11 @@
-import Pencil from '../models/pencil';
-import Line from '../models/line';
-import Rectangle from '../models/rectangle';
-import Circle from '../models/circle';
-import Text from '../models/text';
-import Shape from '../models/shape';
-import Point from '../models/point';
+import $ from "jquery";
+import Pencil from "../models/pencil";
+import Line from "../models/line";
+import Rectangle from "../models/rectangle";
+import Circle from "../models/circle";
+import Text from "../models/text";
+import Shape from "../models/shape";
+import Point from "../models/point";
 
 export default class Canvas {
   public ctx: CanvasRenderingContext2D;
@@ -13,12 +14,12 @@ export default class Canvas {
   public shapes: Shape[] = [];
   public undoObjects: Shape[] = [];
   public isDrawing = false;
-  private _penColor = '#000';
-  private _penShape = 'pencil';
+  private _penColor = "#000";
+  private _penShape = "pencil";
   private _penSize = 4;
 
   constructor(public canvas: HTMLCanvasElement) {
-    this.ctx = canvas.getContext('2d') || new CanvasRenderingContext2D();
+    this.ctx = canvas.getContext("2d") || new CanvasRenderingContext2D();
   }
 
   public get penShape(): string {
@@ -50,24 +51,24 @@ export default class Canvas {
     const rect = this.canvas.getBoundingClientRect();
 
     switch (this.penShape) {
-      case 'pencil':
+      case "pencil":
         this.currentShape = new Pencil(x, y, this.penColor, this.penSize);
         break;
-      case 'line':
+      case "line":
         this.currentShape = new Line(x, y, this.penColor, this.penSize, x, y);
         break;
-      case 'rectangle':
+      case "rectangle":
         this.currentShape = new Rectangle(x, y, this.penColor, this.penSize, x, y);
         break;
-      case 'circle':
+      case "circle":
         this.currentShape = new Circle(x, y, this.penColor, this.penSize, x, y);
         break;
-      case 'text':
+      case "text":
         this.displayTextBox(ev.clientX, ev.clientY);
-        this.currentShape = new Text(ev.clientX - rect.left, ev.clientY - rect.top, this.penColor, '', this.penSize);
+        this.currentShape = new Text(ev.clientX - rect.left, ev.clientY - rect.top, this.penColor, "", this.penSize);
         break;
-      case 'eraser':
-        this.currentShape = new Pencil(x, y, 'white', this.penSize);
+      case "eraser":
+        this.currentShape = new Pencil(x, y, "white", this.penSize);
         break;
     }
   }
@@ -83,27 +84,27 @@ export default class Canvas {
       const points: Point[] = object.points;
 
       switch (object.type) {
-        case 'eraser':
-        case 'pencil':
+        case "eraser":
+        case "pencil":
           start = object.position;
           shape = new Pencil(start.x, start.y, object.color, object.lineWidth);
           points.forEach((point) => shape.addPoint(point.x, point.y));
           break;
-        case 'line':
+        case "line":
           start = object.position;
           end = object.endPoint;
           shape = new Line(start.x, start.y, object.color, object.lineWidth, end.x, end.y);
           break;
-        case 'rectangle':
+        case "rectangle":
           start = object.position;
           shape = new Rectangle(start.x, start.y, object.color, object.size, object.width, object.height);
           break;
-        case 'circle':
+        case "circle":
           start = object.position;
           end = object.endPoint;
           shape = new Circle(start.x, start.y, object.color, object.lineWidth, end.x, end.y);
           break;
-        case 'text':
+        case "text":
           start = object.position;
           shape = new Text(start.x, start.y, object.color, object.fontSize, object.text);
           break;
@@ -151,12 +152,12 @@ export default class Canvas {
       this.currentInputBox.remove();
     }
 
-    this.currentInputBox = $('<input />');
-    this.currentInputBox.css('position', 'fixed');
-    this.currentInputBox.css('top', y);
-    this.currentInputBox.css('left', x);
+    this.currentInputBox = $("<input />");
+    this.currentInputBox.css("position", "fixed");
+    this.currentInputBox.css("top", y);
+    this.currentInputBox.css("left", x);
 
-    $('.text-spawner').append(this.currentInputBox);
+    $(".text-spawner").append(this.currentInputBox);
     this.currentInputBox.focus();
   }
 }

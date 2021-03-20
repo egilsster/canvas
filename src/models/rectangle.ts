@@ -1,7 +1,7 @@
-import Shape from './shape';
+import Shape from "./shape";
 
 export default class Rectangle extends Shape {
-  public type = 'rectangle';
+  public type = "rectangle";
 
   constructor(x: number, y: number, color: string, public size: number, public width: number, public height: number) {
     super(x, y, color);

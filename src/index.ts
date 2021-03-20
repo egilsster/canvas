@@ -1,58 +1,56 @@
-import * as $ from 'jquery';
+import $ from "jquery";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min';
-import 'spectrum-colorpicker/spectrum.css';
-import 'spectrum-colorpicker';
-import './styles.css';
+import "spectrum-colorpicker/spectrum.css";
+import "spectrum-colorpicker";
+import "./style.css";
 
-import ResizeCanvas from './utils/resizer';
-import Canvas from './utils/canvas';
-import Pencil from './models/pencil';
-import Line from './models/line';
-import Rectangle from './models/rectangle';
-import Circle from './models/circle';
-import Text from './models/text';
+import ResizeCanvas from "./utils/resizer";
+import Canvas from "./utils/canvas";
+import Pencil from "./models/pencil";
+import Line from "./models/line";
+import Rectangle from "./models/rectangle";
+import Circle from "./models/circle";
+import Text from "./models/text";
 
-$(document).ready(() => {
+$(() => {
   // Resize the whiteboard to match width and height of window
   ResizeCanvas();
-  $(window).resize(ResizeCanvas);
+  $(window).on("resize", ResizeCanvas);
 
-  const canvasElement = document.getElementById('myCanvas') as HTMLCanvasElement;
+  const canvasElement = document.getElementById("my-canvas") as HTMLCanvasElement;
   const canvas: Canvas = new Canvas(canvasElement);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colorPicker = $('#penColor') as any;
+  const colorPicker = $("#penColor") as any;
   colorPicker.spectrum({
-    preferredFormat: 'hex',
+    preferredFormat: "hex",
   });
 
-  $('#penShape').change((ev: JQuery.EventBase): void => {
-    canvas.penShape = ev.target['value'];
+  $("#pen-shape").on("change", (ev: JQuery.EventBase): void => {
+    canvas.penShape = ev.target["value"];
   });
 
-  $('#penSize').change((ev: JQuery.EventBase): void => {
-    canvas.penSize = ev.target['value'];
+  $("#penSize").on("change", (ev: JQuery.EventBase): void => {
+    canvas.penSize = ev.target["value"];
   });
 
-  $('#penColor').change((ev: JQuery.EventBase): void => {
-    canvas.penColor = ev.target['value'];
+  $("#penColor").on("change", (ev: JQuery.EventBase): void => {
+    canvas.penColor = ev.target["value"];
   });
 
-  $('#clearCanvas').click((): void => canvas.clearCanvas());
-  $('#undo').click((): void => canvas.redoShape());
-  $('#redo').click((): void => canvas.undoShape());
+  $("#clear-canvas").on("click", (): void => canvas.clearCanvas());
+  $("#undo").on("click", (): void => canvas.redoShape());
+  $("#redo").on("click", (): void => canvas.undoShape());
 
-  $('#myCanvas').mousedown((ev: JQuery.MouseDownEvent): void => {
-    const x0 = ev.pageX - ev.target['offsetLeft'];
-    const y0 = ev.pageY - ev.target['offsetTop'];
+  $("#my-canvas").mousedown((ev: JQuery.MouseDownEvent): void => {
+    const x0 = ev.pageX - ev.target["offsetLeft"];
+    const y0 = ev.pageY - ev.target["offsetTop"];
     canvas.addShape(x0, y0, ev);
   });
 
-  $('#myCanvas').mousemove((ev: JQuery.MouseMoveEvent): void => {
+  $("#my-canvas").mousemove((ev: JQuery.MouseMoveEvent): void => {
     if (canvas.isDrawing) {
-      const x0 = ev.pageX - ev.target['offsetLeft'];
-      const y0 = ev.pageY - ev.target['offsetTop'];
+      const x0 = ev.pageX - ev.target["offsetLeft"];
+      const y0 = ev.pageY - ev.target["offsetTop"];
       const width = x0 - canvas.currentShape.position.x;
       const height = y0 - canvas.currentShape.position.y;
       let currShape;
@@ -60,23 +58,23 @@ $(document).ready(() => {
       // TODO: Find a way to remove the casting step
 
       switch (canvas.penShape) {
-        case 'pencil':
+        case "pencil":
           currShape = canvas.currentShape as Pencil;
           currShape.addPoint(x0, y0);
           break;
-        case 'line':
+        case "line":
           currShape = canvas.currentShape as Line;
           currShape.setEndPoint(x0, y0);
           break;
-        case 'rectangle':
+        case "rectangle":
           currShape = canvas.currentShape as Rectangle;
           currShape.setSize(width, height);
           break;
-        case 'circle':
+        case "circle":
           currShape = canvas.currentShape as Circle;
           currShape.setSize(x0, y0);
           break;
-        case 'eraser':
+        case "eraser":
           currShape = canvas.currentShape as Pencil;
           currShape.addPoint(x0, y0);
           break;
@@ -88,8 +86,8 @@ $(document).ready(() => {
     }
   });
 
-  $('#myCanvas').mouseup((): void => {
-    if (canvas.penShape !== 'text') {
+  $("#my-canvas").mouseup((): void => {
+    if (canvas.penShape !== "text") {
       canvas.shapes.push(canvas.currentShape);
       canvas.redraw();
     }
@@ -97,7 +95,7 @@ $(document).ready(() => {
     canvas.isDrawing = false;
   });
 
-  $('.text-spawner').keydown((ev: JQuery.KeyDownEvent): void => {
+  $(".text-spawner").keydown((ev: JQuery.KeyDownEvent): void => {
     if (canvas.isDrawing) {
       if (ev.which === 13) {
         const currShape = canvas.currentShape as Text;
