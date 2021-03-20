@@ -1,24 +1,21 @@
 root: true
 
-parser: '@typescript-eslint/parser'
+parser: "@typescript-eslint/parser"
 
 plugins:
-  - '@typescript-eslint'
+  - "@typescript-eslint"
   - prettier
 
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/recommended
-  - plugin:import/errors
-  - plugin:import/warnings
-  - plugin:import/typescript
 
 rules:
-  prettier/prettier: 2
+  prettier/prettier: error
 
 parserOptions:
   ecmaVersion: 2018
-  project: './tsconfig.json'
+  project: "./tsconfig.json"
   sourceType: module
 
 env:
@@ -27,11 +24,5 @@ env:
 globals:
   $: true
 
-overrides:
-  - files:
-      - webpack/**/*.js
-    rules:
-      no-console: 0
-      '@typescript-eslint/no-var-requires': 0
-    env:
-      node: true
+ignorePatterns:
+  - "*.config.js"

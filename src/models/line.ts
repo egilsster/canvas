@@ -1,8 +1,8 @@
-import Shape from './shape';
-import Point from './point';
+import Shape from "./shape";
+import Point from "./point";
 
 export default class Line extends Shape {
-  public type = 'line';
+  public type = "line";
   private endPoint: Point;
 
   constructor(x0: number, y0: number, color: string, public lineWidth: number, x1: number, y1: number) {
@@ -16,7 +16,7 @@ export default class Line extends Shape {
   }
 
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.lineCap = 'round';
+    ctx.lineCap = "round";
     ctx.lineWidth = this.lineWidth;
     ctx.beginPath();
     ctx.moveTo(this.position.x, this.position.y);

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Whiteboard</title>
+  </head>
+
+  <body>
+    <main class="min-h-screen bg-gray-100 flex flex-col">
+      <header class="md:flex md:items-center md:justify-between p-4 md:pb-4">
+        <div>
+          <h1 class="font-sans font-extralight uppercase leading-none text-xl text-grey-darkest">Whiteboard</h1>
+        </div>
+
+        <div class="flex space-x-4 text-gray-600">
+          <label for="pen-shape">Tool</label>
+          <select class="" id="pen-shape">
+            <option value="pencil">Pencil</option>
+            <option value="line">Line</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="text">Text</option>
+            <option value="eraser">Erase</option>
+          </select>
+
+          <label for="penSize">Size</label>
+          <select id="penSize">
+            <option value="4">Normal</option>
+            <option value="2">Thin</option>
+            <option value="8">Thick</option>
+          </select>
+
+          <label for="penColor">Color</label>
+          <input id="penColor" />
+        </div>
+
+        <div class="text-white">
+          <button class="bg-blue-400 hover:bg-blue-500 font-bold py-2 px-4" id="undo"><a href="#">Undo</a></button>
+          <button class="bg-blue-400 hover:bg-blue-500 font-bold py-2 px-4" id="redo"><a href="#">Redo</a></button>
+          <button class="bg-red-600 hover:bg-red-700 font-bold py-2 px-4" id="clear-canvas">
+            <a href="#">Clear</a>
+          </button>
+        </div>
+      </header>
+
+      <div id="canvas-container" class="">
+        <canvas id="my-canvas" class="bg-white" height="700" width=""></canvas>
+        <div class="text-spawner"></div>
+      </div>
+
+      <footer class="p-4">
+        <p class="text-gray-400">Web Programming 2015 - Reykjavik University</p>
+      </footer>
+    </main>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
+</html>

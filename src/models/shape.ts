@@ -1,4 +1,4 @@
-import Point from './point';
+import Point from "./point";
 
 export default abstract class Shape {
   private _position: Point;

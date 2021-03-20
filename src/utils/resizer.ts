@@ -1,11 +1,11 @@
-import * as $ from 'jquery';
+import $ from "jquery";
 
 export default function ResizeCanvas(): void {
-  const container = $('.canvasContainer');
-  const canvas = $('#myCanvas');
+  const container = $("#canvas-container");
+  const canvas = $("#my-canvas");
   const canvasWidth = container.width() as number;
   const canvasHeight = container.height() as number;
 
-  canvas.attr('width', canvasWidth);
-  canvas.attr('height', canvasHeight);
+  canvas.attr("width", canvasWidth);
+  canvas.attr("height", canvasHeight);
 }

@@ -1,8 +1,8 @@
 # Canvas in TypeScript
 
-## Setup
+## Getting started
 
 ```sh
 npm install
-npm start
+npm run dev
 ```

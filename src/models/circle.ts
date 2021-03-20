@@ -1,8 +1,8 @@
-import Shape from './shape';
-import Point from './point';
+import Shape from "./shape";
+import Point from "./point";
 
 export default class Circle extends Shape {
-  public type = 'circle';
+  public type = "circle";
   private endPoint: Point;
 
   constructor(x: number, y: number, color: string, public lineWidth: number, x1: number, y1: number) {
