@@ -1,11 +1,14 @@
 {
   "name": "canvas",
   "version": "1.0.0",
+  "homepage": "https://egilsster.github.io/canvas",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint ./src --ext .ts"
+    "lint": "eslint ./src --ext .ts",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "license": "ISC",
   "dependencies": {
@@ -24,6 +27,7 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
+    "gh-pages": "3.1.0",
     "postcss": "8.2.8",
     "prettier": "2.2.1",
     "tailwindcss": "2.0.4",
