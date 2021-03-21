@@ -12,12 +12,10 @@
   },
   "license": "ISC",
   "dependencies": {
-    "jquery": "3.6.0",
-    "spectrum-colorpicker": "1.8.1"
+    "vanilla-picker": "2.11.2"
   },
   "devDependencies": {
     "@tailwindcss/jit": "0.1.4",
-    "@types/jquery": "3.5.5",
     "@typescript-eslint/eslint-plugin": "4.18.0",
     "@typescript-eslint/parser": "4.18.0",
     "autoprefixer": "10.2.5",
