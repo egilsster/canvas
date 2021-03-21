@@ -2,6 +2,10 @@
   "name": "canvas",
   "version": "1.0.0",
   "homepage": "https://egilsster.github.io/canvas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egilsster/canvas"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
