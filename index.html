@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Whiteboard</title>
-  <script type="module" crossorigin src="/canvas/assets/index.5c93a626.js"></script>
-  <link rel="modulepreload" href="/canvas/assets/vendor.82562c7a.js">
-  <link rel="stylesheet" href="/canvas/assets/index.ed5e98c6.css">
+    <link rel="icon" type="image/ico" href="/canvas/assets/favicon.9ccd84b4.ico" />
+
+    <title>Canvas</title>
+  <script type="module" crossorigin src="/canvas/assets/index.0418d391.js"></script>
+  <link rel="modulepreload" href="/canvas/assets/vendor.236a05f6.js">
+  <link rel="stylesheet" href="/canvas/assets/index.944a1da8.css">
 </head>
 
   <body>
     <main class="min-h-screen bg-gray-100 flex flex-col">
       <header class="md:flex md:items-center md:justify-between p-4 md:pb-4">
         <div>
-          <h1 class="font-sans font-extralight uppercase leading-none text-xl text-grey-darkest">Whiteboard</h1>
+          <h1 class="font-sans font-extralight uppercase leading-none text-xl text-grey-darkest">Canvas</h1>
         </div>
 
         <div class="flex space-x-4 text-gray-600">
-          <label for="pen-shape">Tool</label>
-          <select class="" id="pen-shape">
+          <label for="penShape">Tool</label>
+          <select id="penShape" class="cursor-pointer">
             <option value="pencil">Pencil</option>
             <option value="line">Line</option>
             <option value="rectangle">Rectangle</option>
@@ -29,14 +31,16 @@
           </select>
 
           <label for="penSize">Size</label>
-          <select id="penSize">
+          <select id="penSize" class="cursor-pointer">
             <option value="4">Normal</option>
             <option value="2">Thin</option>
             <option value="8">Thick</option>
           </select>
 
-          <label for="penColor">Color</label>
-          <input id="penColor" />
+          <div class="flex">
+            <div class="pr-4">Color</div>
+            <div id="penColor" class="w-10 border border-black cursor-pointer"></div>
+          </div>
         </div>
 
         <div class="text-white">
@@ -48,7 +52,7 @@
         </div>
       </header>
 
-      <div id="canvas-container" class="">
+      <div id="canvas-container">
         <canvas id="my-canvas" class="bg-white" height="700" width=""></canvas>
         <div class="text-spawner"></div>
       </div>
