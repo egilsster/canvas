@@ -1,4 +1,4 @@
-import $ from "jquery";
+import { getConfig, KEYS, setKey } from "./config";
 import Pencil from "../models/pencil";
 import Line from "../models/line";
 import Rectangle from "../models/rectangle";
@@ -9,7 +9,7 @@ import Point from "../models/point";
 
 export default class Canvas {
   public ctx: CanvasRenderingContext2D;
-  public currentInputBox!: JQuery;
+  public currentInputBox!: HTMLInputElement;
   public currentShape!: Shape;
   public shapes: Shape[] = [];
   public undoObjects: Shape[] = [];
@@ -20,6 +20,13 @@ export default class Canvas {
 
   constructor(public canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext("2d") || new CanvasRenderingContext2D();
+
+    const config = getConfig();
+    if (config) {
+      this.penColor = config.penColor;
+      this.penShape = config.penShape;
+      this.penSize = config.penSize;
+    }
   }
 
   public get penShape(): string {
@@ -28,6 +35,7 @@ export default class Canvas {
 
   public set penShape(shape: string) {
     this._penShape = shape;
+    setKey(KEYS.penShape, shape);
   }
 
   public get penColor(): string {
@@ -36,6 +44,7 @@ export default class Canvas {
 
   public set penColor(color: string) {
     this._penColor = color;
+    setKey(KEYS.penColor, color);
   }
 
   public get penSize(): number {
@@ -44,9 +53,10 @@ export default class Canvas {
 
   public set penSize(size: number) {
     this._penSize = size;
+    setKey(KEYS.penSize, String(size));
   }
 
-  public addShape(x: number, y: number, ev: JQuery.MouseEventBase): void {
+  public addShape(x: number, y: number, ev: MouseEvent): void {
     this.isDrawing = true;
     const rect = this.canvas.getBoundingClientRect();
 
@@ -152,12 +162,12 @@ export default class Canvas {
       this.currentInputBox.remove();
     }
 
-    this.currentInputBox = $("<input />");
-    this.currentInputBox.css("position", "fixed");
-    this.currentInputBox.css("top", y);
-    this.currentInputBox.css("left", x);
+    this.currentInputBox = document.createElement("input");
+    this.currentInputBox.style.position = "fixed";
+    this.currentInputBox.style.top = `${y}px`;
+    this.currentInputBox.style.left = `${x}px`;
 
-    $(".text-spawner").append(this.currentInputBox);
+    document.querySelector(".text-spawner")?.append(this.currentInputBox);
     this.currentInputBox.focus();
   }
 }
