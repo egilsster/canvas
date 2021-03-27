@@ -27,5 +27,5 @@ jobs:
           CI_REPO_OWNER: egilsster
           CI_REPO_NAME: canvas
           CI_COMMIT_SHA: ${{ env.GITHUB_SHA }}
-          CI_BRANCH: ${{ env.GITHUB_REF##refs/heads/}}
+          CI_BRANCH: ${{ env.GITHUB_REF}}
           BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
