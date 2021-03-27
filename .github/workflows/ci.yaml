@@ -22,4 +22,10 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
-      - run: npm run bundlewatch
+      - run: npm run bundlwatch
+        env:
+          CI_REPO_OWNER: egilsster
+          CI_REPO_NAME: canvas
+          CI_COMMIT_SHA: ${{ env.GITHUB_SHA }}
+          CI_BRANCH: ${{ env.GITHUB_REF##refs/heads/}}
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
