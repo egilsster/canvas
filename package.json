@@ -1,6 +1,18 @@
 {
   "name": "canvas",
   "version": "1.0.0",
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "dist/assets/index.*.js",
+        "maxSize": "2.5kB"
+      },
+      {
+        "path": "dist/assets/vendor.*.js",
+        "maxSize": "7kB"
+      }
+    ]
+  },
   "homepage": "https://egilsster.github.io/canvas",
   "repository": {
     "type": "git",
@@ -11,6 +23,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint ./src --ext .ts",
+    "bundlewatch": "bundlewatch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -23,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "4.18.0",
     "@typescript-eslint/parser": "4.18.0",
     "autoprefixer": "10.2.5",
+    "bundlewatch": "0.3.2",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-import-resolver-typescript": "2.4.0",
