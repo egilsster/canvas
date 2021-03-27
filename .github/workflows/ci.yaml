@@ -22,7 +22,7 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
-      - run: npm run bundlwatch
+      - run: npm run bundlewatch
         env:
           CI_REPO_OWNER: egilsster
           CI_REPO_NAME: canvas
