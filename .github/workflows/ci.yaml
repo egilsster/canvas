@@ -3,9 +3,9 @@ name: ci
 on:
   push:
     branches:
-      - '*'
+      - "*"
     tags-ignore:
-      - 'v*.*.*'
+      - "v*.*.*"
 
 jobs:
   validate:
@@ -20,5 +20,6 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-npm-
       - run: npm install
+      - run: npm run format:check
       - run: npm run lint
       - run: npm run build
