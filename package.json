@@ -7,7 +7,7 @@
     "url": "https://github.com/egilsster/canvas"
   },
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint ./src --ext .ts",
