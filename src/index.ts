@@ -6,8 +6,8 @@ import Line from "./models/line";
 import Rectangle from "./models/rectangle";
 import Circle from "./models/circle";
 import Text from "./models/text";
-import "./style.css";
 import { getConfig } from "./utils/config";
+import "./style.css";
 
 (() => {
   const penShapeElement = document.querySelector("#penShape") as HTMLSelectElement;
