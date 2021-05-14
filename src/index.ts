@@ -113,9 +113,9 @@ import "./style.css";
     canvas.isDrawing = false;
   });
 
-  (document.querySelector(
-    ".text-spawner"
-  ) as HTMLTextAreaElement).addEventListener("keydown", (ev): void => {
+  (
+    document.querySelector(".text-spawner") as HTMLTextAreaElement
+  ).addEventListener("keydown", (ev): void => {
     if (canvas.isDrawing) {
       if (ev.which === 13) {
         const currShape = canvas.currentShape as Text;
