@@ -5,7 +5,12 @@ export default class Pencil extends Shape {
   public type = "pencil";
   private points: Point[];
 
-  constructor(x: number, y: number, public color: string, public lineWidth: number) {
+  constructor(
+    x: number,
+    y: number,
+    public color: string,
+    public lineWidth: number
+  ) {
     super(x, y, color);
     this.points = [new Point(x, y)]; // Add starting point
   }

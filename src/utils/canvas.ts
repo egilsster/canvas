@@ -68,14 +68,27 @@ export default class Canvas {
         this.currentShape = new Line(x, y, this.penColor, this.penSize, x, y);
         break;
       case "rectangle":
-        this.currentShape = new Rectangle(x, y, this.penColor, this.penSize, x, y);
+        this.currentShape = new Rectangle(
+          x,
+          y,
+          this.penColor,
+          this.penSize,
+          x,
+          y
+        );
         break;
       case "circle":
         this.currentShape = new Circle(x, y, this.penColor, this.penSize, x, y);
         break;
       case "text":
         this.displayTextBox(ev.clientX, ev.clientY);
-        this.currentShape = new Text(ev.clientX - rect.left, ev.clientY - rect.top, this.penColor, "", this.penSize);
+        this.currentShape = new Text(
+          ev.clientX - rect.left,
+          ev.clientY - rect.top,
+          this.penColor,
+          "",
+          this.penSize
+        );
         break;
       case "eraser":
         this.currentShape = new Pencil(x, y, "white", this.penSize);
@@ -103,20 +116,47 @@ export default class Canvas {
         case "line":
           start = object.position;
           end = object.endPoint;
-          shape = new Line(start.x, start.y, object.color, object.lineWidth, end.x, end.y);
+          shape = new Line(
+            start.x,
+            start.y,
+            object.color,
+            object.lineWidth,
+            end.x,
+            end.y
+          );
           break;
         case "rectangle":
           start = object.position;
-          shape = new Rectangle(start.x, start.y, object.color, object.size, object.width, object.height);
+          shape = new Rectangle(
+            start.x,
+            start.y,
+            object.color,
+            object.size,
+            object.width,
+            object.height
+          );
           break;
         case "circle":
           start = object.position;
           end = object.endPoint;
-          shape = new Circle(start.x, start.y, object.color, object.lineWidth, end.x, end.y);
+          shape = new Circle(
+            start.x,
+            start.y,
+            object.color,
+            object.lineWidth,
+            end.x,
+            end.y
+          );
           break;
         case "text":
           start = object.position;
-          shape = new Text(start.x, start.y, object.color, object.fontSize, object.text);
+          shape = new Text(
+            start.x,
+            start.y,
+            object.color,
+            object.fontSize,
+            object.text
+          );
           break;
       }
 

@@ -5,7 +5,14 @@ export default class Circle extends Shape {
   public type = "circle";
   private endPoint: Point;
 
-  constructor(x: number, y: number, color: string, public lineWidth: number, x1: number, y1: number) {
+  constructor(
+    x: number,
+    y: number,
+    color: string,
+    public lineWidth: number,
+    x1: number,
+    y1: number
+  ) {
     super(x, y, color);
     this.endPoint = new Point(x1, y1);
   }

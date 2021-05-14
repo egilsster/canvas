@@ -10,10 +10,18 @@ import { getConfig } from "./utils/config";
 import "./style.css";
 
 (() => {
-  const penShapeElement = document.querySelector("#penShape") as HTMLSelectElement;
-  const penSizeElement = document.querySelector("#penSize") as HTMLSelectElement;
-  const penColorElement = document.querySelector("#penColor") as HTMLSelectElement;
-  const canvasElement = document.querySelector("#my-canvas") as HTMLCanvasElement;
+  const penShapeElement = document.querySelector(
+    "#penShape"
+  ) as HTMLSelectElement;
+  const penSizeElement = document.querySelector(
+    "#penSize"
+  ) as HTMLSelectElement;
+  const penColorElement = document.querySelector(
+    "#penColor"
+  ) as HTMLSelectElement;
+  const canvasElement = document.querySelector(
+    "#my-canvas"
+  ) as HTMLCanvasElement;
 
   const config = getConfig();
 
@@ -36,7 +44,8 @@ import "./style.css";
     },
   });
 
-  const readValue = <T>(ev: Event, fallback: T): T => (ev.target ? ev.target["value"] : fallback);
+  const readValue = <T>(ev: Event, fallback: T): T =>
+    ev.target ? ev.target["value"] : fallback;
 
   penShapeElement.addEventListener("change", (ev) => {
     canvas.penShape = readValue(ev, canvas.penShape);
@@ -46,9 +55,15 @@ import "./style.css";
     canvas.penSize = readValue(ev, canvas.penSize);
   });
 
-  document.querySelector("#clear-canvas")?.addEventListener("click", () => canvas.clearCanvas());
-  document.querySelector("#undo")?.addEventListener("click", () => canvas.redoShape());
-  document.querySelector("#redo")?.addEventListener("click", () => canvas.undoShape());
+  document
+    .querySelector("#clear-canvas")
+    ?.addEventListener("click", () => canvas.clearCanvas());
+  document
+    .querySelector("#undo")
+    ?.addEventListener("click", () => canvas.redoShape());
+  document
+    .querySelector("#redo")
+    ?.addEventListener("click", () => canvas.undoShape());
 
   canvasElement.addEventListener("mousedown", (ev): void => {
     if (ev.target) {
@@ -98,7 +113,9 @@ import "./style.css";
     canvas.isDrawing = false;
   });
 
-  (document.querySelector(".text-spawner") as HTMLTextAreaElement).addEventListener("keydown", (ev): void => {
+  (document.querySelector(
+    ".text-spawner"
+  ) as HTMLTextAreaElement).addEventListener("keydown", (ev): void => {
     if (canvas.isDrawing) {
       if (ev.which === 13) {
         const currShape = canvas.currentShape as Text;
