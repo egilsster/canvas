@@ -1,4 +1,3 @@
 module.exports = {
-  purge: ["./index.html", "./src/**/*.ts"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.ts"],
 };
