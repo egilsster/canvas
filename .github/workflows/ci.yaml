@@ -13,13 +13,11 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
-      - name: Cache node modules
-        uses: actions/cache@v2
+      - uses: actions/setup-node@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-npm-
-      - run: npm install
+          node-version: "16"
+          cache: npm
+      - run: npm ci
       - run: npm run format:check
       - run: npm run lint
       - run: npm run build
