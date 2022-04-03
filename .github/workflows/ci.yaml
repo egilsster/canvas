@@ -21,7 +21,7 @@ jobs:
       - run: npm run format:check
       - run: npm run lint
       - run: npm run build
-      - name: Deploy 🚀
+      - name: deploy to github pages
         if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
