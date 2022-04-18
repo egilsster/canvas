@@ -1,7 +1,4 @@
-# Canvas &thinsp; [![ci.badge]][ci]
-
-[ci.badge]: https://github.com/egilsster/canvas/actions/workflows/ci.yaml/badge.svg?branch=main
-[ci]: https://github.com/egilsster/canvas/actions/workflows/ci.yaml
+# Canvas
 
 Vanilla canvas application written in TypeScript and is built with Vite, TailwindCSS. Originally written during my
 undergrad in Reykjavik University (used to be written in JavaScript and used jQuery, gulp and bootstrap) but I have
