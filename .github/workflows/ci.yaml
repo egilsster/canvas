@@ -11,11 +11,10 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repository
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: 16
           cache: npm
       - run: npm ci
       - run: npm run format:check
@@ -23,7 +22,7 @@ jobs:
       - run: npm run build
       - name: deploy to github pages
         if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: gh-pages
           folder: dist
