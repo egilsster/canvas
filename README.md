@@ -4,11 +4,4 @@ Vanilla canvas application written in TypeScript and is built with Vite, Tailwin
 undergrad in Reykjavik University (used to be written in JavaScript and used jQuery, gulp and bootstrap) but I have
 been playing with new technologies in this project for fun.
 
-## Getting started
-
-```sh
-npm install
-npm start
-```
-
-Then open <http://localhost:3000/> in your browser.
+Accessible at [egilsster.github.io/canvas](https://egilsster.github.io/canvas/)
