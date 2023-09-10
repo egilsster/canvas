@@ -1,11 +1,11 @@
-import { getConfig, KEYS, setKey } from "./config";
-import Pencil from "../models/pencil";
-import Line from "../models/line";
-import Rectangle from "../models/rectangle";
 import Circle from "../models/circle";
-import Text from "../models/text";
-import Shape from "../models/shape";
+import Line from "../models/line";
+import Pencil from "../models/pencil";
 import Point from "../models/point";
+import Rectangle from "../models/rectangle";
+import Shape from "../models/shape";
+import Text from "../models/text";
+import { KEYS, getConfig, setKey } from "./config";
 
 export default class Canvas {
   public ctx: CanvasRenderingContext2D;
@@ -98,12 +98,14 @@ export default class Canvas {
 
   // Function that goes through
   // the saved array and remakes items
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: todo
   public drawLoaded(objects: any[]): void {
     objects.forEach((object) => {
       // TODO: Clean up switch statement so I dont
       // have to use the shape variable for casting
-      let shape, start: Point, end: Point;
+      let shape;
+      let start: Point;
+      let end: Point;
       const points: Point[] = object.points;
 
       switch (object.type) {

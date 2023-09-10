@@ -1,5 +1,5 @@
-import Shape from "./shape";
 import Point from "./point";
+import Shape from "./shape";
 
 export default class Circle extends Shape {
   public type = "circle";
