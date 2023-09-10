@@ -9,7 +9,7 @@ export default class Rectangle extends Shape {
     color: string,
     public size: number,
     public width: number,
-    public height: number
+    public height: number,
   ) {
     super(x, y, color);
   }

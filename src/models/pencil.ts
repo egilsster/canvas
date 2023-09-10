@@ -1,5 +1,5 @@
-import Shape from "./shape";
 import Point from "./point";
+import Shape from "./shape";
 
 export default class Pencil extends Shape {
   public type = "pencil";
@@ -9,7 +9,7 @@ export default class Pencil extends Shape {
     x: number,
     y: number,
     public color: string,
-    public lineWidth: number
+    public lineWidth: number,
   ) {
     super(x, y, color);
     this.points = [new Point(x, y)]; // Add starting point

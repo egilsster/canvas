@@ -20,7 +20,7 @@ function calcCanvasWidth(containerEl: HTMLDivElement): {
 
 export default function ResizeCanvas(canvasEl: HTMLCanvasElement): void {
   const container = document.querySelector(
-    "#canvas-container"
+    "#canvas-container",
   ) as HTMLDivElement;
 
   const { width, height } = calcCanvasWidth(container);

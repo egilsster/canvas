@@ -8,7 +8,7 @@ export default class Text extends Shape {
     y: number,
     color: string,
     private text: string,
-    public fontSize: number
+    public fontSize: number,
   ) {
     super(x, y, color);
   }
@@ -18,7 +18,7 @@ export default class Text extends Shape {
   }
 
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.font = this.fontSize * 5 + "px Arial";
+    ctx.font = `${this.fontSize * 5}px Arial`;
     ctx.fillStyle = this.color;
     ctx.fillText(this.text, this.position.x, this.position.y);
   }

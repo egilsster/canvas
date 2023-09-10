@@ -1,26 +1,26 @@
 import Picker from "vanilla-picker";
-import ResizeCanvas from "./utils/resizer";
-import Canvas from "./utils/canvas";
-import Pencil from "./models/pencil";
-import Line from "./models/line";
-import Rectangle from "./models/rectangle";
 import Circle from "./models/circle";
+import Line from "./models/line";
+import Pencil from "./models/pencil";
+import Rectangle from "./models/rectangle";
 import Text from "./models/text";
-import { getConfig } from "./utils/config";
 import "./style.css";
+import Canvas from "./utils/canvas";
+import { getConfig } from "./utils/config";
+import ResizeCanvas from "./utils/resizer";
 
 (() => {
   const penShapeElement = document.querySelector(
-    "#penShape"
+    "#penShape",
   ) as HTMLSelectElement;
   const penSizeElement = document.querySelector(
-    "#penSize"
+    "#penSize",
   ) as HTMLSelectElement;
   const penColorElement = document.querySelector(
-    "#penColor"
+    "#penColor",
   ) as HTMLSelectElement;
   const canvasElement = document.querySelector(
-    "#my-canvas"
+    "#my-canvas",
   ) as HTMLCanvasElement;
 
   const config = getConfig();
@@ -44,15 +44,14 @@ import "./style.css";
     },
   });
 
-  const readValue = <T>(ev: Event, fallback: T): T =>
-    ev.target ? ev.target["value"] : fallback;
-
   penShapeElement.addEventListener("change", (ev) => {
-    canvas.penShape = readValue(ev, canvas.penShape);
+    const target = ev.target as HTMLSelectElement | null;
+    canvas.penShape = target?.value || canvas.penShape;
   });
 
   penSizeElement.addEventListener("change", (ev) => {
-    canvas.penSize = readValue(ev, canvas.penSize);
+    const target = ev.target as HTMLSelectElement | null;
+    canvas.penSize = Number(target?.value) || canvas.penSize;
   });
 
   document
@@ -66,17 +65,19 @@ import "./style.css";
     ?.addEventListener("click", () => canvas.undoShape());
 
   canvasElement.addEventListener("mousedown", (ev): void => {
-    if (ev.target) {
-      const x0 = ev.pageX - ev.target["offsetLeft"];
-      const y0 = ev.pageY - ev.target["offsetTop"];
+    const target = ev.target as HTMLCanvasElement | null;
+    if (target) {
+      const x0 = ev.pageX - target.offsetLeft;
+      const y0 = ev.pageY - target.offsetTop;
       canvas.addShape(x0, y0, ev);
     }
   });
 
   canvasElement.addEventListener("mousemove", (ev): void => {
-    if (canvas.isDrawing && ev.target) {
-      const x0 = ev.pageX - ev.target["offsetLeft"];
-      const y0 = ev.pageY - ev.target["offsetTop"];
+    const target = ev.target as HTMLCanvasElement | null;
+    if (canvas.isDrawing && target) {
+      const x0 = ev.pageX - target.offsetLeft;
+      const y0 = ev.pageY - target.offsetTop;
       const width = x0 - canvas.currentShape.position.x;
       const height = y0 - canvas.currentShape.position.y;
 
