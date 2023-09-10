@@ -74,7 +74,7 @@ export default class Canvas {
           this.penColor,
           this.penSize,
           x,
-          y
+          y,
         );
         break;
       case "circle":
@@ -87,7 +87,7 @@ export default class Canvas {
           ev.clientY - rect.top,
           this.penColor,
           "",
-          this.penSize
+          this.penSize,
         );
         break;
       case "eraser":
@@ -122,7 +122,7 @@ export default class Canvas {
             object.color,
             object.lineWidth,
             end.x,
-            end.y
+            end.y,
           );
           break;
         case "rectangle":
@@ -133,7 +133,7 @@ export default class Canvas {
             object.color,
             object.size,
             object.width,
-            object.height
+            object.height,
           );
           break;
         case "circle":
@@ -145,7 +145,7 @@ export default class Canvas {
             object.color,
             object.lineWidth,
             end.x,
-            end.y
+            end.y,
           );
           break;
         case "text":
@@ -155,7 +155,7 @@ export default class Canvas {
             start.y,
             object.color,
             object.fontSize,
-            object.text
+            object.text,
           );
           break;
       }

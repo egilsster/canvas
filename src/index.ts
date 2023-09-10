@@ -11,16 +11,16 @@ import "./style.css";
 
 (() => {
   const penShapeElement = document.querySelector(
-    "#penShape"
+    "#penShape",
   ) as HTMLSelectElement;
   const penSizeElement = document.querySelector(
-    "#penSize"
+    "#penSize",
   ) as HTMLSelectElement;
   const penColorElement = document.querySelector(
-    "#penColor"
+    "#penColor",
   ) as HTMLSelectElement;
   const canvasElement = document.querySelector(
-    "#my-canvas"
+    "#my-canvas",
   ) as HTMLCanvasElement;
 
   const config = getConfig();

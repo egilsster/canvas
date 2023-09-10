@@ -9,7 +9,7 @@ export default class Pencil extends Shape {
     x: number,
     y: number,
     public color: string,
-    public lineWidth: number
+    public lineWidth: number,
   ) {
     super(x, y, color);
     this.points = [new Point(x, y)]; // Add starting point

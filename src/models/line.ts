@@ -11,7 +11,7 @@ export default class Line extends Shape {
     color: string,
     public lineWidth: number,
     x1: number,
-    y1: number
+    y1: number,
   ) {
     super(x0, y0, color);
     this.endPoint = new Point(x1, y1);

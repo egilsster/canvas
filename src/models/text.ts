@@ -8,7 +8,7 @@ export default class Text extends Shape {
     y: number,
     color: string,
     private text: string,
-    public fontSize: number
+    public fontSize: number,
   ) {
     super(x, y, color);
   }

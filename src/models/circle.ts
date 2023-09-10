@@ -11,7 +11,7 @@ export default class Circle extends Shape {
     color: string,
     public lineWidth: number,
     x1: number,
-    y1: number
+    y1: number,
   ) {
     super(x, y, color);
     this.endPoint = new Point(x1, y1);
