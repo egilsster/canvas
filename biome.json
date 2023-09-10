@@ -1,0 +1,22 @@
+{
+  "files": {
+    "ignore": [
+      "scripts/*.js",
+      ".editorconfig",
+      ".gitignore",
+      ".romeignore",
+      "LICENSE",
+      "dist/"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 80
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  }
+}
