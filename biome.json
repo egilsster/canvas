@@ -1,13 +1,6 @@
 {
   "files": {
-    "ignore": [
-      "scripts/*.js",
-      ".editorconfig",
-      ".gitignore",
-      ".romeignore",
-      "LICENSE",
-      "dist/"
-    ]
+    "ignore": ["dist/"]
   },
   "formatter": {
     "indentStyle": "space",
