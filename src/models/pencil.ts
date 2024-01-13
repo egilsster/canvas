@@ -24,10 +24,9 @@ export default class Pencil extends Shape {
     ctx.beginPath();
     ctx.moveTo(this.position.x, this.position.y);
 
-    this.points.forEach((point) => {
+    for (const point of this.points) {
       ctx.lineTo(point.x, point.y);
-    });
-
+    }
     ctx.lineWidth = this.lineWidth;
     ctx.strokeStyle = this.color;
     ctx.stroke();

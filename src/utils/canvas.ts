@@ -100,25 +100,34 @@ export default class Canvas {
   // the saved array and remakes items
   // biome-ignore lint/suspicious/noExplicitAny: todo
   public drawLoaded(objects: any[]): void {
-    objects.forEach((object) => {
+    for (const object of objects) {
       // TODO: Clean up switch statement so I dont
       // have to use the shape variable for casting
-      let shape;
+      // let shape: Shape;
       let start: Point;
       let end: Point;
       const points: Point[] = object.points;
 
       switch (object.type) {
         case "eraser":
-        case "pencil":
+        case "pencil": {
           start = object.position;
-          shape = new Pencil(start.x, start.y, object.color, object.lineWidth);
-          points.forEach((point) => shape.addPoint(point.x, point.y));
+          const shape = new Pencil(
+            start.x,
+            start.y,
+            object.color,
+            object.lineWidth,
+          );
+          for (const point of points) {
+            shape.addPoint(point.x, point.y);
+          }
+          this.shapes.push(shape);
           break;
-        case "line":
+        }
+        case "line": {
           start = object.position;
           end = object.endPoint;
-          shape = new Line(
+          const shape = new Line(
             start.x,
             start.y,
             object.color,
@@ -126,10 +135,12 @@ export default class Canvas {
             end.x,
             end.y,
           );
+          this.shapes.push(shape);
           break;
-        case "rectangle":
+        }
+        case "rectangle": {
           start = object.position;
-          shape = new Rectangle(
+          const shape = new Rectangle(
             start.x,
             start.y,
             object.color,
@@ -137,11 +148,13 @@ export default class Canvas {
             object.width,
             object.height,
           );
+          this.shapes.push(shape);
           break;
-        case "circle":
+        }
+        case "circle": {
           start = object.position;
           end = object.endPoint;
-          shape = new Circle(
+          const shape = new Circle(
             start.x,
             start.y,
             object.color,
@@ -149,28 +162,34 @@ export default class Canvas {
             end.x,
             end.y,
           );
+          this.shapes.push(shape);
           break;
-        case "text":
+        }
+        case "text": {
+          console.log("text case");
+
           start = object.position;
-          shape = new Text(
+          const shape = new Text(
             start.x,
             start.y,
             object.color,
             object.fontSize,
             object.text,
           );
+          this.shapes.push(shape);
           break;
+        }
       }
-
-      this.shapes.push(shape);
-    });
+    }
 
     this.redraw();
   }
 
   public redraw(): void {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.shapes.forEach((shape) => shape.draw(this.ctx));
+    for (const shape of this.shapes) {
+      shape.draw(this.ctx);
+    }
   }
 
   public clearCanvas(): void {
@@ -205,9 +224,12 @@ export default class Canvas {
     }
 
     this.currentInputBox = document.createElement("input");
-    this.currentInputBox.style.position = "fixed";
-    this.currentInputBox.style.top = `${y}px`;
-    this.currentInputBox.style.left = `${x}px`;
+    // Coordinates minus roughly the height on the input
+    // so it's placed directly under the cursor.
+    this.currentInputBox.style.top = `${y - 10}px`;
+    this.currentInputBox.style.left = `${x - 10}px`;
+    this.currentInputBox.className =
+      "top-[100px] fixed border border-black rounded-sm p-1";
 
     document.querySelector(".text-spawner")?.append(this.currentInputBox);
     this.currentInputBox.focus();

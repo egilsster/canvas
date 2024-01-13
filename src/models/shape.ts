@@ -3,7 +3,11 @@ import Point from "./point";
 export default abstract class Shape {
   private _position: Point;
 
-  constructor(x: number, y: number, public color: string) {
+  constructor(
+    x: number,
+    y: number,
+    public color: string,
+  ) {
     this._position = new Point(x, y);
   }
 

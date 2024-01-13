@@ -38,7 +38,7 @@ import ResizeCanvas from "./utils/resizer";
   new Picker({
     parent: penColorElement,
     color: config.penColor,
-    onDone: function (color) {
+    onDone: (color) => {
       penColorElement.style.background = color.hex;
       canvas.penColor = color.hex;
     },
