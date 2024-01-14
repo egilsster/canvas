@@ -101,9 +101,6 @@ export default class Canvas {
   // biome-ignore lint/suspicious/noExplicitAny: todo
   public drawLoaded(objects: any[]): void {
     for (const object of objects) {
-      // TODO: Clean up switch statement so I dont
-      // have to use the shape variable for casting
-      // let shape: Shape;
       let start: Point;
       let end: Point;
       const points: Point[] = object.points;

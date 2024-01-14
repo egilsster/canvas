@@ -12,6 +12,7 @@
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "test": "bun test",
     "format": "biome format --write .",
     "check": "biome check .",
     "fix": "biome check --apply ."
@@ -21,6 +22,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.1",
+    "@happy-dom/global-registrator": "^13.0.6",
+    "@types/bun": "^1.0.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",

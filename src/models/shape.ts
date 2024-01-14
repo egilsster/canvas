@@ -1,18 +1,14 @@
 import Point from "./point";
 
 export default abstract class Shape {
-  private _position: Point;
+  readonly position: Point;
 
   constructor(
     x: number,
     y: number,
     public color: string,
   ) {
-    this._position = new Point(x, y);
-  }
-
-  public get position(): Point {
-    return this._position;
+    this.position = new Point(x, y);
   }
 
   abstract draw(ctx: CanvasRenderingContext2D): void;
