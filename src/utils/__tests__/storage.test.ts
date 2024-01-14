@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, test } from "bun:test";
-import { save, load, clear } from "../storage";
 import Pencil from "../../models/pencil";
 import Rectangle from "../../models/rectangle";
 import Text from "../../models/text";
+import { clear, load, save } from "../storage";
 
 describe("storage", () => {
   beforeEach(() => {
