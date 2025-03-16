@@ -1,9 +1,9 @@
 import Circle from "../models/circle";
 import Line from "../models/line";
 import Pencil from "../models/pencil";
-import Point from "../models/point";
+import type Point from "../models/point";
 import Rectangle from "../models/rectangle";
-import Shape from "../models/shape";
+import type Shape from "../models/shape";
 import Text from "../models/text";
 import { KEYS, getConfig, setKey } from "./config";
 
@@ -226,7 +226,7 @@ export default class Canvas {
     this.currentInputBox.style.top = `${y - 10}px`;
     this.currentInputBox.style.left = `${x - 10}px`;
     this.currentInputBox.className =
-      "top-[100px] fixed border border-black rounded-sm p-1";
+      "top-[100px] fixed border border-black rounded-xs p-1";
 
     document.querySelector(".text-spawner")?.append(this.currentInputBox);
     this.currentInputBox.focus();

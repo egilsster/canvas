@@ -1,4 +1,4 @@
-import Shape from "../models/shape";
+import type Shape from "../models/shape";
 
 const LS_KEY = "egilsster/canvas:drawings";
 

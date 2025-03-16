@@ -16,7 +16,7 @@
     <main id="app-root" class="hidden h-screen w-screen md:flex flex-col">
       <dialog
         id="load-canvas-modal"
-        class="backdrop-blur-sm shadow-lg ring-1 ring-slate-700/25 pt-2 pb-4 px-4 w-[450px] h-[400px] overflow-hidden rounded-sm top-1/4"
+        class="backdrop-blur-xs shadow-lg ring-1 ring-slate-700/25 pt-2 pb-4 px-4 w-[450px] h-[400px] overflow-hidden rounded-xs top-1/4"
       >
         <div class="flex flex-col h-full">
           <div
@@ -47,7 +47,7 @@
       >
         <a
           title="Source code"
-          class="h-8 flex items-center font-sans font-ultralight leading-none text-md hover:bg-gray-200 active:bg-gray-300 border rounded-sm transition-colors py-1 px-3 uppercase"
+          class="h-8 flex items-center font-sans font-ultralight leading-none text-md hover:bg-gray-200 active:bg-gray-300 border rounded-xs transition-colors py-1 px-3 uppercase"
           href="https://github.com/egilsster/canvas"
           >Canvas</a
         >
@@ -57,7 +57,7 @@
             <label for="penShape">Tool</label>
             <select
               id="penShape"
-              class="cursor-pointer rounded-sm p-1 h-full px-1 ml-2"
+              class="cursor-pointer rounded-xs p-1 h-full px-1 ml-2"
             >
               <option value="pencil">Pencil</option>
               <option value="line">Line</option>
@@ -72,7 +72,7 @@
             <label for="penSize">Size</label>
             <select
               id="penSize"
-              class="cursor-pointer rounded-sm p-1 h-full px-1 ml-2"
+              class="cursor-pointer rounded-xs p-1 h-full px-1 ml-2"
             >
               <option value="4">Normal</option>
               <option value="2">Thin</option>
@@ -84,14 +84,14 @@
             <div>Color</div>
             <div
               id="penColor"
-              class="w-8 h-full rounded-sm border border-black cursor-pointer ml-2"
+              class="w-8 h-full rounded-xs border border-black cursor-pointer ml-2"
             ></div>
           </div>
         </div>
 
         <div id="action-buttons" class="text-white flex flex-row">
           <div
-            class="grid grid-cols-5 divide-x-2 divide-white rounded-sm overflow-hidden h-8"
+            class="grid grid-cols-5 divide-x-2 divide-white rounded-xs overflow-hidden h-8"
           >
             <button
               class="transition-colors bg-red-600 hover:bg-red-500 active:bg-red-700 font-semibold p-1"
@@ -203,7 +203,7 @@
 
       <div
         id="canvas-container"
-        class="bg-slate-200 h-full grow-[999] shrink-[999] basis-0 p-2"
+        class="bg-slate-200 h-full grow-999 shrink-999 basis-0 p-2"
       >
         <canvas id="my-canvas" class="bg-white cursor-crosshair"></canvas>
         <div class="text-spawner"></div>

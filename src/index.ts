@@ -1,9 +1,9 @@
 import Picker from "vanilla-picker";
-import Circle from "./models/circle";
-import Line from "./models/line";
-import Pencil from "./models/pencil";
-import Rectangle from "./models/rectangle";
-import Text from "./models/text";
+import type Circle from "./models/circle";
+import type Line from "./models/line";
+import type Pencil from "./models/pencil";
+import type Rectangle from "./models/rectangle";
+import type Text from "./models/text";
 import "./style.css";
 import Canvas from "./utils/canvas";
 import { getConfig } from "./utils/config";
@@ -117,7 +117,7 @@ import { clear, load, save } from "./utils/storage";
         for (const [name, { data, date }] of savedEntries) {
           const listItem = document.createElement("li");
           listItem.className =
-            "transition-colors flex justify-between cursor-pointer py-1 ring-1 ring-gray-500/25 m-0.5 px-1.5 rounded-sm hover:bg-gray-100 items-center";
+            "transition-colors flex justify-between cursor-pointer py-1 ring-1 ring-gray-500/25 m-0.5 px-1.5 rounded-xs hover:bg-gray-100 items-center";
 
           const nameEl = document.createElement("span");
           nameEl.className = "truncate w-1/2";

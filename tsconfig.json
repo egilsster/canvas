@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2015",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
     "noImplicitAny": false,
     "sourceMap": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "strict": true
+    "strict": true,
+    "noEmit": true
   },
   "exclude": ["node_modules"]
 }

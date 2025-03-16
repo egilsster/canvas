@@ -6,11 +6,14 @@ function calcCanvasWidth(containerEl: HTMLDivElement): {
   const width = containerEl.offsetWidth;
   const height = containerEl.offsetHeight;
 
-  const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+  const margin =
+    Number.parseFloat(style.marginLeft) + Number.parseFloat(style.marginRight);
   const padding =
-    parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    Number.parseFloat(style.paddingLeft) +
+    Number.parseFloat(style.paddingRight);
   const border =
-    parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+    Number.parseFloat(style.borderLeftWidth) +
+    Number.parseFloat(style.borderRightWidth);
 
   const totalAvailableHeight = height - margin - padding - border;
   const totalAvailableWidth = width - margin - padding - border;
